@@ -1,0 +1,22 @@
+{
+  "name": "thedogbot",
+  "version": "1.0.0",
+  "description": "Awesome Telegram bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack && node ./dist/bundle.js",
+    "build": "webpack"
+  },
+  "author": "yurakis",
+  "license": "ISC",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.30.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "ts-loader": "^5.1.1",
+    "typescript": "^3.0.3",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
