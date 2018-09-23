@@ -1,5 +1,5 @@
 import * as TelegramBot from 'node-telegram-bot-api';
-import { config } from './config';
+import { config } from '../config';
 import { Chat } from './chat.model';
 
 interface ITelegramBot {

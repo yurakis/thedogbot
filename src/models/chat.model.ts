@@ -1,5 +1,5 @@
 import { DogBot } from './bot.model';
-import { StorageService } from './storage.service';
+import { PromiseService } from '../services';
 import { User } from './user.model';
 
 export class Chat {
@@ -8,13 +8,13 @@ export class Chat {
   public readonly lastName: string;
   public readonly username: string;
   public readonly type: 'private';
-  public readonly storage: StorageService;
-  public members: User[];
+  public readonly promiseService: PromiseService;
+  public readonly members: User[];
   private readonly bot: DogBot;
 
   constructor(bot: DogBot, data) {
     this.bot = bot;
-    this.storage = new StorageService();
+    this.promiseService = new PromiseService();
     this.members = [];
     this.id = data.id;
     this.firstName = data.first_name;

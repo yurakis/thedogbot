@@ -1,6 +1,6 @@
-import { Promise, PromiseStatus } from './promise.model';
+import { Promise, PromiseStatus } from '../models';
 
-export class StorageService {
+export class PromiseService {
   private promises: Map<number, Promise>;
   private promiseCallback: Function;
 
@@ -12,10 +12,13 @@ export class StorageService {
     const promise: Promise = {
       userId,
       id: this.promises.size + 1,
-      status: 1
+      status: PromiseStatus.NEW
     };
 
-    promise.interval = setTimeout(() => this.promiseCallback(promise), interval);
+    promise.interval = setTimeout(() => {
+      this.updatePromiseStatus(promise.id, PromiseStatus.PENDING);
+      this.promiseCallback(promise);
+    }, interval);
     this.promises.set(promise.id, promise);
 
     return promise;
@@ -25,7 +28,7 @@ export class StorageService {
     this.promiseCallback = callback;
   }
 
-  public finishPromise(id, status: PromiseStatus): void {
+  public updatePromiseStatus(id, status: PromiseStatus): void {
     const promise = this.getPromise(id);
 
     if (promise === null) {
