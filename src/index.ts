@@ -100,7 +100,18 @@ bot.onText(/\/rating/, (response) => {
   chat.sendMessage(chat.members.length > 0 ?
     chat.members
       .sort((a, b) => b.dogCount - a.dogCount)
-      .map((member, index) => `${index + 1}. ${member.firstNme} ${member.lastName} (${member.username}) - ${member.dogCount}`) :
+      .map((member, index) => {
+        const parts = [
+          `${index + 1}. ${member.fullName}`,
+          ` - ${member.dogCount}`
+        ];
+
+        if (member.username) {
+          parts.splice(1, 0, ` (${member.username})`);
+        }
+
+        return parts.join('');
+      }) :
     'Пока никто не учавствует'
   );
 });
