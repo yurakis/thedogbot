@@ -1,5 +1,3 @@
-import { User } from './user.model';
-
 export enum PromiseStatus {
   DONE,
   PENDING,
@@ -11,5 +9,5 @@ export interface Promise {
   id: number;
   status: PromiseStatus;
   interval?: number;
-  user: User;
+  userId: number;
 }

@@ -1,20 +1,16 @@
-import { User } from './user.model';
-import { Chat } from './chat.model';
 import { Promise, PromiseStatus } from './promise.model';
 
 export class StorageService {
-  public chat: Chat;
   private promises: Map<number, Promise>;
   private promiseCallback: Function;
 
-  constructor(chat) {
+  constructor() {
     this.promises = new Map();
-    this.chat = new Chat(chat);
   }
 
-  public addPromise(user: User, interval: number): Promise {
+  public addPromise(userId: number, interval: number): Promise {
     const promise: Promise = {
-      user,
+      userId,
       id: this.promises.size + 1,
       status: 1
     };

@@ -44,7 +44,7 @@ export class TimeUnit {
     }
   }
 
-  getCasedName(value: number): string {
+  public getCasedName(value: number): string {
     const n = Number(String(value).slice(-1));
     const item = TimeUnit.items.get(this.name);
 
